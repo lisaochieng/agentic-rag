@@ -17,21 +17,6 @@ An advanced, local Retrieval-Augmented Generation (RAG) assistant built on an ag
 
 Instead of using a traditional linear RAG pipeline, this system treats data flow as states moving through an asynchronous, compiled graph machine.
 
-       [User Input]
-            |
-            v
-   +-----------------+
-   |  retrieve_node  |  --> Invokes Qdrant vector search via LangChain Tool
-   +-----------------+
-            |
-            v
-   +-----------------+
-   |  generate_node  |  --> Injects context into prompt & runs Ollama inference
-   +-----------------+
-            |
-            v
-        [ [END] ]       --> Returns clean string response to Gradio UI
-
 
 1. State Definition: An explicit TypedDict tracks variables (question, context, answer) as they mutate through the graph layers.
 2. Deterministic Retrieval: Queries pass through a LangChain StructuredTool wrapping a dense vector query against local Qdrant collections.
